@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+    <div id="map"></div>
+    <div id=details></div>
+    <script>
+        var reqcount = 0;
+        let details = document.getElementById('details');
+        navigator.geolocation.watchPosition(successCallback,errorCallback,options);
+        function successCallback(position){
+            const {accuracy,latitude,longitude,altitude,heading,speed} = position.coords;
+            console.log(position,"position");
+            reqcount++;
+            details.innerHTML = 'Accuracy: ' + accuracy+'<br>';
+            details.innerHTML += 'latitude: ' + latitude + '<br>';
+            details.innerHTML += 'longitude: ' + longitude + '<br>';
+            details.innerHTML += 'speed: ' + speed + '<br>';
+            details.innerHTML += 'heading: ' + heading + '<br>';
+            details.innerHTML += 'reqCount: ' + reqcount ;
+            // const map = document.getElementById('map');
+            // map.innerHTML = '<iframe width="600" height="450" style="border:0;" src="https://maps.google.com/maps?q='+latitude+','+longitude+'&amp;z=15&amp;output=embed"></iframe>'
+        }
+
+        function errorCallback(error){};
+
+        function options(pos){};
+
+        // navigator.geolocation.getCurrentPosition(position=>{
+        //     const {latitude,longitude} = position.coords;
+        //     const map = document.getElementById('map');
+        //     map.innerHTML = '<iframe width="600" height="450" style="border:0;" src="https://maps.google.com/maps?q='+latitude+','+longitude+'&amp;z=15&amp;output=embed"></iframe>'
+            
+        // });
+
+    </script>
+    
+</body>
+</html>
